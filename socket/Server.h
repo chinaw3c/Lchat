@@ -15,7 +15,7 @@
 
 class Socket{
 public:
-    Socket() : addr(new std::string("0")), port(8888),
+    Socket() : addr(new std::string("0.0.0.0")), port(18888),
                listennum(LISTEN_MAX_NUMBER) {
         init();
     };
@@ -29,9 +29,6 @@ public:
     };
     virtual ~Socket(){
         delete addr;
-        for (auto i : addrs){
-            delete i;
-        }
     }
 
 
@@ -40,7 +37,6 @@ public:
      * create connect
      */
     void connect();
-    inline void create();
     inline int GetListenNum();
 
 
@@ -52,7 +48,6 @@ private:
     int port;
     unsigned int listennum;
     struct sockaddr_in address;
-    std::vector< struct sockaddr_in *> addrs;
     int sockfd;
     void SendRecvMsg(int client);
     std::vector< int > clientL;

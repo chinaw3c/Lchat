@@ -1,1 +1,1 @@
-/usr/bin/c++  -g   CMakeFiles/Lchat.dir/main.cpp.o CMakeFiles/Lchat.dir/socket/Server.cc.o  -o Lchat 
+/usr/bin/c++  -g   CMakeFiles/Lchat.dir/main.cpp.o CMakeFiles/Lchat.dir/socket/Server.cc.o  -o Lchat -lpthread 

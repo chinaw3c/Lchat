@@ -15,7 +15,10 @@
 #include <arpa/inet.h>
 #include <zconf.h>
 #include <thread>
+#include <cstring>
 #include "Server.h"
+#include "../tools/VectorRemove.h"
+
 
 using namespace std;
 
@@ -30,12 +33,13 @@ void Socket::init() {
         << __LINE__ << endl;
         exit(1);
     }
+    //out log
+    cout << "INFO [+] create socket success." << endl;
 
     //create socket address
     bzero(&address, sizeof(address));
     address.sin_family = AF_INET;
-    //int ret = inet_pton(AF_INET, addr->c_str(), &address.sin_addr);
-    inet_pton(AF_INET, "0.0.0.0", &address.sin_addr);
+    inet_pton(AF_INET, addr->c_str(), &address.sin_addr);
     address.sin_port = htons(port);
     int ret = bind(sockfd, (struct sockaddr *)&address, sizeof(address));
     if (ret == -1){
@@ -43,18 +47,16 @@ void Socket::init() {
         << __LINE__ << endl;
         exit(1);
     }
-}
-
-
-inline void Socket::create(){
-    //create address
-    addrs.push_back(new struct sockaddr_in);
+    //out log
+    cout << "INFO [+] bind sockfd success" << endl;
+    cout << "INFO [+] listen port " << port << endl;
+    cout << "INFO [+] listen ip " << *addr << endl;
 }
 
 
 inline int Socket::GetListenNum() {
     //show listens number
-    return addrs.size();
+    return clientL.size();
 }
 
 void Socket::connect(){
@@ -62,8 +64,9 @@ void Socket::connect(){
      * create connect
      */
 
-    listen(sockfd, LISTEN_MAX_NUMBER);
+    listen(sockfd, listennum);
     struct sockaddr_in client;
+    bzero(&client, sizeof(client));
     socklen_t client_addrlength = sizeof(client);
     while (true){
         int connfd = accept(sockfd, (struct sockaddr *)&client,
@@ -78,9 +81,10 @@ void Socket::connect(){
             exit(2);
         }
         else{
-            //打印连接后的客户端信息
+            cout << "INFO [+] " << connfd << "-连接成功" << endl;
             clientL.push_back(connfd);
-            cout << "连接数:" << clientL.size() << endl;
+            //打印连接后的客户端信息
+            cout << "INFO [*] 连接数：" << clientL.size() << endl;
             thread one(&Socket::SendRecvMsg, this, connfd);
             one.detach();
         }
@@ -93,7 +97,21 @@ void Socket::SendRecvMsg(int client) {
     char msg[1024] = {0};
     while(true){
         read(client, &msg, sizeof(msg));
-        for (auto i : this->clientL){
+        if (strcmp(msg, "q") == 0){
+            cout << "退出一位杰出的少年" << endl;
+            strcpy(msg, "退出一位杰出的少年");
+            for (auto i : clientL){
+                write(i, msg, sizeof(msg));
+            }
+            RemoveVector(clientL, client);
+            cout << "INFO [-] 连接数-1" << endl;
+            cout << "INFO [*] 连接数：" << clientL.size() << endl;
+            break;
+        }
+        for (auto i : clientL){
+            if (i == client){
+                continue;
+            }
             write(i, msg, sizeof(msg));
         }
     }

@@ -4,6 +4,7 @@
   <component name="CidrRootsConfiguration">
     <sourceRoots>
       <file path="$PROJECT_DIR$/socket" />
+      <file path="$PROJECT_DIR$/tools" />
     </sourceRoots>
   </component>
   <component name="JavaScriptSettings">

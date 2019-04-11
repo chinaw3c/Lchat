@@ -4,8 +4,8 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/liuaotian/socker/Lchat/main.cpp" "/home/liuaotian/socker/Lchat/cmake-build-debug/CMakeFiles/Lchat.dir/main.cpp.o"
-  "/home/liuaotian/socker/Lchat/socket/Server.cc" "/home/liuaotian/socker/Lchat/cmake-build-debug/CMakeFiles/Lchat.dir/socket/Server.cc.o"
+  "/home/wang/Liuaotian/Lchat/main.cpp" "/home/wang/Liuaotian/Lchat/cmake-build-debug/CMakeFiles/Lchat.dir/main.cpp.o"
+  "/home/wang/Liuaotian/Lchat/socket/Server.cc" "/home/wang/Liuaotian/Lchat/cmake-build-debug/CMakeFiles/Lchat.dir/socket/Server.cc.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
