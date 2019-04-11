@@ -6,4 +6,5 @@ CMakeFiles/Lchat.dir/main.cpp.o: ../socket/Server.h
 
 CMakeFiles/Lchat.dir/socket/Server.cc.o: ../socket/Server.cc
 CMakeFiles/Lchat.dir/socket/Server.cc.o: ../socket/Server.h
+CMakeFiles/Lchat.dir/socket/Server.cc.o: ../tools/VectorRemove.h
 
