@@ -1,0 +1,34 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/liuaotian/socker/Lchat/socket/Server.cc
+sys/socket.h
+-
+iostream
+-
+netinet/in.h
+-
+strings.h
+-
+arpa/inet.h
+-
+zconf.h
+-
+thread
+-
+Server.h
+/home/liuaotian/socker/Lchat/socket/Server.h
+
+/home/liuaotian/socker/Lchat/socket/Server.h
+string
+-
+arpa/inet.h
+-
+vector
+-
+
