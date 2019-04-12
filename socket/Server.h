@@ -15,7 +15,7 @@
 
 class Socket{
 public:
-    Socket() : addr(new std::string("0.0.0.0")), port(18888),
+    Socket() : addr(new std::string("0.0.0.0")), port(8888),
                listennum(LISTEN_MAX_NUMBER) {
         init();
     };

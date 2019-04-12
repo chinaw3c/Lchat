@@ -6,13 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/wang/Liuaotian/Lchat/main.cpp
-iostream
--
-socket/Server.h
-/home/wang/Liuaotian/Lchat/socket/Server.h
-
-/home/wang/Liuaotian/Lchat/socket/Server.cc
+/home/liuaotian/socker/Lchat/socket/Server.cc
 sys/socket.h
 -
 iostream
@@ -29,12 +23,16 @@ thread
 -
 cstring
 -
+vector
+-
+algorithm
+-
 Server.h
-/home/wang/Liuaotian/Lchat/socket/Server.h
+/home/liuaotian/socker/Lchat/socket/Server.h
 ../tools/VectorRemove.h
-/home/wang/Liuaotian/Lchat/tools/VectorRemove.h
+/home/liuaotian/socker/Lchat/tools/VectorRemove.h
 
-/home/wang/Liuaotian/Lchat/socket/Server.h
+/home/liuaotian/socker/Lchat/socket/Server.h
 string
 -
 arpa/inet.h
@@ -42,7 +40,7 @@ arpa/inet.h
 vector
 -
 
-/home/wang/Liuaotian/Lchat/tools/VectorRemove.h
+/home/liuaotian/socker/Lchat/tools/VectorRemove.h
 vector
 -
 iostream

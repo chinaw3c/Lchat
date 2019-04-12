@@ -39,19 +39,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /home/wang/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/191.6183.77/bin/cmake/linux/bin/cmake
+CMAKE_COMMAND = /usr/share/clion-2018.3.4/bin/cmake/linux/bin/cmake
 
 # The command to remove a file.
-RM = /home/wang/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/191.6183.77/bin/cmake/linux/bin/cmake -E remove -f
+RM = /usr/share/clion-2018.3.4/bin/cmake/linux/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/wang/Liuaotian/Lchat
+CMAKE_SOURCE_DIR = /home/liuaotian/socker/Lchat
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/wang/Liuaotian/Lchat/cmake-build-debug
+CMAKE_BINARY_DIR = /home/liuaotian/socker/Lchat/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -59,7 +59,7 @@ CMAKE_BINARY_DIR = /home/wang/Liuaotian/Lchat/cmake-build-debug
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/home/wang/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/191.6183.77/bin/cmake/linux/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/usr/share/clion-2018.3.4/bin/cmake/linux/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -70,7 +70,7 @@ rebuild_cache/fast: rebuild_cache
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/home/wang/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/191.6183.77/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+	/usr/share/clion-2018.3.4/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/wang/Liuaotian/Lchat/cmake-build-debug/CMakeFiles /home/wang/Liuaotian/Lchat/cmake-build-debug/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/liuaotian/socker/Lchat/cmake-build-debug/CMakeFiles /home/liuaotian/socker/Lchat/cmake-build-debug/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/wang/Liuaotian/Lchat/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/liuaotian/socker/Lchat/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -122,6 +122,73 @@ Lchat: cmake_check_build_system
 Lchat/fast:
 	$(MAKE) -f CMakeFiles/Lchat.dir/build.make CMakeFiles/Lchat.dir/build
 .PHONY : Lchat/fast
+
+#=============================================================================
+# Target rules for targets named Client
+
+# Build rule for target.
+Client: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Client
+.PHONY : Client
+
+# fast build rule for target.
+Client/fast:
+	$(MAKE) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/build
+.PHONY : Client/fast
+
+client/Client.o: client/Client.cc.o
+
+.PHONY : client/Client.o
+
+# target to build an object file
+client/Client.cc.o:
+	$(MAKE) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/client/Client.cc.o
+.PHONY : client/Client.cc.o
+
+client/Client.i: client/Client.cc.i
+
+.PHONY : client/Client.i
+
+# target to preprocess a source file
+client/Client.cc.i:
+	$(MAKE) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/client/Client.cc.i
+.PHONY : client/Client.cc.i
+
+client/Client.s: client/Client.cc.s
+
+.PHONY : client/Client.s
+
+# target to generate assembly for a file
+client/Client.cc.s:
+	$(MAKE) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/client/Client.cc.s
+.PHONY : client/Client.cc.s
+
+client/main.o: client/main.cc.o
+
+.PHONY : client/main.o
+
+# target to build an object file
+client/main.cc.o:
+	$(MAKE) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/client/main.cc.o
+.PHONY : client/main.cc.o
+
+client/main.i: client/main.cc.i
+
+.PHONY : client/main.i
+
+# target to preprocess a source file
+client/main.cc.i:
+	$(MAKE) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/client/main.cc.i
+.PHONY : client/main.cc.i
+
+client/main.s: client/main.cc.s
+
+.PHONY : client/main.s
+
+# target to generate assembly for a file
+client/main.cc.s:
+	$(MAKE) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/client/main.cc.s
+.PHONY : client/main.cc.s
 
 main.o: main.cpp.o
 
@@ -184,8 +251,15 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... rebuild_cache"
-	@echo "... Lchat"
 	@echo "... edit_cache"
+	@echo "... Lchat"
+	@echo "... Client"
+	@echo "... client/Client.o"
+	@echo "... client/Client.i"
+	@echo "... client/Client.s"
+	@echo "... client/main.o"
+	@echo "... client/main.i"
+	@echo "... client/main.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

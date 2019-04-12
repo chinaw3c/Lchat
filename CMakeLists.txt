@@ -6,3 +6,4 @@ set(CMAKE_CXX_STANDARD 14)
 LINK_LIBRARIES(pthread)
 
 add_executable(Lchat main.cpp socket/Server.cc socket/Server.h)
+add_executable(Client client/Client.cc client/Client.h client/main.cc)

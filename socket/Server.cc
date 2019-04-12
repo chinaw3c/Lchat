@@ -16,8 +16,11 @@
 #include <zconf.h>
 #include <thread>
 #include <cstring>
+#include <vector>
+#include <algorithm>
 #include "Server.h"
 #include "../tools/VectorRemove.h"
+
 
 
 using namespace std;
@@ -71,6 +74,13 @@ void Socket::connect(){
     while (true){
         int connfd = accept(sockfd, (struct sockaddr *)&client,
                             &client_addrlength);
+        if (clientL.size() + 1 > listennum){
+            /*
+             * 如果超过最大数，就拒绝连接
+             */
+            close(connfd);
+            continue;
+        }
         if (connfd < 0){
             cerr << "INFO [-] Error in function connect->accept"
                  << "\tline:"
@@ -96,17 +106,24 @@ void Socket::SendRecvMsg(int client) {
     // 收发消息
     char msg[1024] = {0};
     while(true){
+        bzero(msg, sizeof(msg));
         read(client, &msg, sizeof(msg));
-        if (strcmp(msg, "q") == 0){
+        char quit[] = {"q"};
+        if (strcmp(msg, quit) == 0){
             cout << "退出一位杰出的少年" << endl;
             strcpy(msg, "退出一位杰出的少年");
             for (auto i : clientL){
                 write(i, msg, sizeof(msg));
             }
-            RemoveVector(clientL, client);
+            int ret = close(client);
+            if (ret == -1){
+                cerr << "Error close" << "\tline:" << __LINE__ << endl;
+            }
+            clientL.erase(std::remove(clientL.begin(), clientL.end(), client), clientL.end());
+
             cout << "INFO [-] 连接数-1" << endl;
             cout << "INFO [*] 连接数：" << clientL.size() << endl;
-            break;
+            return;
         }
         for (auto i : clientL){
             if (i == client){

@@ -1,4 +1,4 @@
-/home/wang/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/191.6183.77/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/wang/Liuaotian/Lchat
+/usr/share/clion-2018.3.4/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/liuaotian/socker/Lchat
 -- Configuring done
 -- Generating done
--- Build files have been written to: /home/wang/Liuaotian/Lchat/cmake-build-debug
+-- Build files have been written to: /home/liuaotian/socker/Lchat/cmake-build-debug
