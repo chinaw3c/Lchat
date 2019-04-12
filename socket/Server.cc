@@ -78,6 +78,7 @@ void Socket::connect(){
             /*
              * 如果超过最大数，就拒绝连接
              */
+            write(connfd, "拒绝连接~", sizeof("拒绝连接~"));
             close(connfd);
             continue;
         }
@@ -107,7 +108,14 @@ void Socket::SendRecvMsg(int client) {
     char msg[1024] = {0};
     while(true){
         bzero(msg, sizeof(msg));
-        read(client, &msg, sizeof(msg));
+        int ret = read(client, &msg, sizeof(msg));
+        if (ret == 0){
+            close(client);
+            clientL.erase(std::remove(clientL.begin(), clientL.end(), client), clientL.end());
+            cout << "INFO [-] 连接数-1" << endl;
+            cout << "INFO [*] 连接数：" << clientL.size() << endl;
+            return;
+        }
         char quit[] = {"q"};
         if (strcmp(msg, quit) == 0){
             cout << "退出一位杰出的少年" << endl;

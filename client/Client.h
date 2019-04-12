@@ -9,6 +9,7 @@
 #include <vector>
 #include <string>
 #include <arpa/inet.h>
+#include <mutex>
 
 class Client {
 public:
@@ -33,11 +34,12 @@ public:
     void SendMsg();
     void RecvMsg();
 
-public:
+private:
     int socks;
     struct sockaddr_in server_addr;
     int port;
     std::string *ip;
+    std::mutex mts;
 
 
 };

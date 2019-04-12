@@ -76,7 +76,9 @@ void Client::SendMsg() {
      */
     char msg[1024] = {0};
     while(1){
-        cout << ">>>";
+        mts.lock();
+        cout << "\n>>>";
+        mts.unlock();
         cin >> msg;
         write(socks, msg, sizeof(msg));
         bzero(msg, sizeof(msg));
@@ -94,9 +96,12 @@ void Client::RecvMsg() {
         int ret = read(socks, msg, sizeof(msg));
         if (ret == 0){
             cout << "服务端断开连接" << endl;
-            //close(socks);
+            close(socks);
             exit(0);
         }
-        cout << "接收:" << msg << endl;
+        mts.lock();
+        cout << "\r接收:" << msg;
+        cout << "\n>>>";
+        mts.unlock();
     }
 }

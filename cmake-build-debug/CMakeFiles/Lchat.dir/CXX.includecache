@@ -6,6 +6,12 @@
 
 #IncludeRegexTransform: 
 
+/home/liuaotian/socker/Lchat/main.cpp
+iostream
+-
+socket/Server.h
+/home/liuaotian/socker/Lchat/socket/Server.h
+
 /home/liuaotian/socker/Lchat/socket/Server.cc
 sys/socket.h
 -
